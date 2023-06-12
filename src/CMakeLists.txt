@@ -19,6 +19,7 @@ set (HEADERS
   qsynthTabBar.h
   qsynthAboutForm.h
   qsynthChannelsForm.h
+  qsynthRouterForm.h
   qsynthMainForm.h
   qsynthMessagesForm.h
   qsynthOptionsForm.h
@@ -39,6 +40,7 @@ set (SOURCES
   qsynthTabBar.cpp
   qsynthAboutForm.cpp
   qsynthChannelsForm.cpp
+  qsynthRouterForm.cpp
   qsynthMainForm.cpp
   qsynthMessagesForm.cpp
   qsynthOptionsForm.cpp
@@ -54,6 +56,7 @@ set (SOURCES
 set (FORMS
   qsynthAboutForm.ui
   qsynthChannelsForm.ui
+  qsynthRouterForm.ui
   qsynthMainForm.ui
   qsynthMessagesForm.ui
   qsynthOptionsForm.ui

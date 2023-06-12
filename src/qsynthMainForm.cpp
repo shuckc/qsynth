@@ -33,6 +33,7 @@
 #include "qsynthOptionsForm.h"
 #include "qsynthMessagesForm.h"
 #include "qsynthChannelsForm.h"
+#include "qsynthRouterForm.h"
 
 #include "qsynthDialClassicStyle.h"
 #include "qsynthDialVokiStyle.h"
@@ -523,6 +524,7 @@ qsynthMainForm::qsynthMainForm (
 	// All forms are to be created later on setup.
 	m_pMessagesForm  = nullptr;
 	m_pChannelsForm  = nullptr;
+	m_pRouterForm    = nullptr;
 
 #ifdef CONFIG_SYSTEM_TRAY
 	// The eventual system tray widget.
@@ -672,6 +674,9 @@ qsynthMainForm::qsynthMainForm (
 	QObject::connect(m_ui.ChannelsPushButton,
 		SIGNAL(clicked()),
 		SLOT(toggleChannelsForm()));
+	QObject::connect(m_ui.RouterPushButton,
+		SIGNAL(clicked()),
+		SLOT(toggleRouterForm()));
 	QObject::connect(m_ui.QuitPushButton,
 		SIGNAL(clicked()),
 		SLOT(quitMainForm()));
@@ -719,6 +724,8 @@ qsynthMainForm::~qsynthMainForm (void)
 		delete m_pMessagesForm;
 	if (m_pChannelsForm)
 		delete m_pChannelsForm;
+	if (m_pRouterForm)
+		delete m_pRouterForm;
 
 #ifdef CONFIG_SYSTEM_TRAY
 	// Quit off system tray widget.
@@ -764,6 +771,7 @@ void qsynthMainForm::setup ( qsynthOptions *pOptions )
 	// All forms are to be created right now.
 	m_pMessagesForm = new qsynthMessagesForm(pParent, wflags);
 	m_pChannelsForm = new qsynthChannelsForm(pParent, wflags);
+	m_pRouterForm   = new qsynthRouterForm(pParent, wflags);
 
 	// Setup appropriately...
 	m_pMessagesForm->setLogging(m_pOptions->bMessagesLog, m_pOptions->sMessagesLogPath);
@@ -781,6 +789,7 @@ void qsynthMainForm::setup ( qsynthOptions *pOptions )
 	// And for the whole widget gallore...
 	m_pOptions->loadWidgetGeometry(m_pMessagesForm);
 	m_pOptions->loadWidgetGeometry(m_pChannelsForm);
+	m_pOptions->loadWidgetGeometry(m_pRouterForm);
 
 	// Set defaults...
 	updateMessagesFont();
@@ -916,12 +925,15 @@ bool qsynthMainForm::queryClose (void)
 		if (bQueryClose) {
 			m_pOptions->saveWidgetGeometry(m_pChannelsForm);
 			m_pOptions->saveWidgetGeometry(m_pMessagesForm);
+			m_pOptions->saveWidgetGeometry(m_pRouterForm);
 			m_pOptions->saveWidgetGeometry(this, true);
 			// Close popup widgets.
 			if (m_pMessagesForm)
 				m_pMessagesForm->close();
 			if (m_pChannelsForm)
 				m_pChannelsForm->close();
+			if (m_pRouterForm)
+				m_pRouterForm->close();
 		#if 0//CONFIG_SYSTEM_TRAY_0
 			// And the system tray icon too.
 			if (m_pSystemTray)
@@ -1383,6 +1395,11 @@ void qsynthMainForm::updateContextMenu (void)
 	pAction->setCheckable(true);
 	pAction->setChecked(m_pChannelsForm && m_pChannelsForm->isVisible());
 	pAction->setEnabled(bEnabled);
+	pAction = m_menu.addAction(QIcon(":/images/channels1.png"),
+		tr("Router"), this, SLOT(toggleRouterForm()));
+	pAction->setCheckable(true);
+	pAction->setChecked(m_pRouterForm && m_pRouterForm->isVisible());
+	pAction->setEnabled(bEnabled);
 	pAction = m_menu.addAction(QIcon(":/images/setup1.png"),
 		tr("Set&up..."), this, SLOT(showSetupForm()));
 	m_menu.addSeparator();
@@ -1477,6 +1494,8 @@ void qsynthMainForm::stabilizeForm (void)
 		m_pMessagesForm && m_pMessagesForm->isVisible());
 	m_ui.ChannelsPushButton->setChecked(
 		m_pChannelsForm && m_pChannelsForm->isVisible());
+	m_ui.RouterPushButton->setChecked(
+		m_pRouterForm && m_pRouterForm->isVisible());
 }
 
 
@@ -1722,6 +1741,28 @@ void qsynthMainForm::toggleChannelsForm (void)
 
 	updateContextMenu();
 }
+
+
+// Message log form requester slot.
+void qsynthMainForm::toggleRouterForm (void)
+{
+	if (m_pOptions == nullptr)
+		return;
+
+	if (m_pRouterForm) {
+		m_pOptions->saveWidgetGeometry(m_pRouterForm);
+		if (m_pRouterForm->isVisible()) {
+			m_pRouterForm->hide();
+		} else {
+			m_pRouterForm->show();
+			m_pRouterForm->raise();
+			m_pRouterForm->activateWindow();
+		}
+	}
+
+	updateContextMenu();
+}
+
 
 
 // Instance dialog requester slot.

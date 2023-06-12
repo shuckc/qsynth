@@ -31,6 +31,7 @@
 class qsynthOptions;
 class qsynthMessagesForm;
 class qsynthChannelsForm;
+class qsynthRouterForm;
 
 #ifdef CONFIG_SYSTEM_TRAY
 class qsynthSystemTray;
@@ -97,6 +98,7 @@ protected slots:
 	void toggleMainForm();
 	void toggleMessagesForm();
 	void toggleChannelsForm();
+	void toggleRouterForm();
 
 	void showSetupForm();
 	void showOptionsForm();
@@ -197,6 +199,7 @@ private:
 
 	qsynthMessagesForm *m_pMessagesForm;
 	qsynthChannelsForm *m_pChannelsForm;
+	qsynthRouterForm   *m_pRouterForm;
 
 	int m_iGainChanged;
 	int m_iReverbChanged;

@@ -1,0 +1,167 @@
+<ui version="4.0" >
+ <author>rncbc aka Rui Nuno Capela</author>
+ <comment>qsynth - A fluidsynth Qt GUI Interface.
+
+   Copyright (C) 2003-2020, rncbc aka Rui Nuno Capela. All rights reserved.
+
+   This program is free software; you can redistribute it and/or
+   modify it under the terms of the GNU General Public License
+   as published by the Free Software Foundation; either version 2
+   of the License, or (at your option) any later version.
+
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License along
+   with this program; if not, write to the Free Software Foundation, Inc.,
+   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+ </comment>
+ <class>qsynthRouterForm</class>
+ <widget class="QWidget" name="qsynthRouterForm" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>520</width>
+    <height>320</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Midi Router</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="qsynth.qrc">:/images/preset1.png</iconset>
+  </property>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>8</number>
+   </property>
+   <property name="spacing" >
+    <number>4</number>
+   </property>
+   <item row="1" column="0" >
+    <widget class="QDialogButtonBox" name="DialogButtonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" >
+    <widget class="QTabWidget" name="PresetTabWidget" >
+     <property name="tabShape" >
+      <enum>QTabWidget::Rounded</enum>
+     </property>
+     <widget class="QWidget" name="tab" >
+      <attribute name="title" >
+       <string>Preset</string>
+      </attribute>
+      <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>8</number>
+       </property>
+       <property name="spacing" >
+        <number>4</number>
+       </property>
+       <item>
+
+         <widget class="QTreeWidget" name="ProgListView" >
+          <property name="toolTip" >
+           <string>Midi Router Rules</string>
+          </property>
+          <property name="alternatingRowColors" >
+           <bool>true</bool>
+          </property>
+          <property name="indentation" >
+           <number>4</number>
+          </property>
+          <property name="rootIsDecorated" >
+           <bool>false</bool>
+          </property>
+          <property name="uniformRowHeights" >
+           <bool>true</bool>
+          </property>
+          <property name="itemsExpandable" >
+           <bool>false</bool>
+          </property>
+          <property name="sortingEnabled" >
+           <bool>true</bool>
+          </property>
+          <property name="allColumnsShowFocus" >
+           <bool>true</bool>
+          </property>
+          <column>
+           <property name="text" >
+            <string>Event</string>
+           </property>
+          </column>
+          <column>
+           <property name="text" >
+            <string>Match Channel</string>
+           </property>
+          </column>
+          <column>
+           <property name="text" >
+            <string>Set Channel</string>
+           </property>
+          </column>
+          <column>
+           <property name="text" >
+            <string>Match Param 1</string>
+           </property>
+          </column>
+          <column>
+           <property name="text" >
+            <string>Set Param 1</string>
+           </property>
+          </column>
+          <column>
+           <property name="text" >
+            <string>Match Param 2</string>
+           </property>
+          </column>
+          <column>
+           <property name="text" >
+            <string>Set Param 2</string>
+           </property>
+          </column>
+
+         </widget>
+
+       </item>
+       <item>
+        <widget class="QCheckBox" name="PreviewCheckBox" >
+         <property name="toolTip" >
+          <string>Whether to preview the current selection</string>
+         </property>
+         <property name="text" >
+          <string>Preview</string>
+         </property>
+         <property name="shortcut" >
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="4" margin="4" />
+ <tabstops>
+  <tabstop>PresetTabWidget</tabstop>
+  <tabstop>ProgListView</tabstop>
+  <tabstop>PreviewCheckBox</tabstop>
+  <tabstop>DialogButtonBox</tabstop>
+ </tabstops>
+ <resources>
+  <include location="qsynth.qrc" />
+ </resources>
+ <connections/>
+</ui>
