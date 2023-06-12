@@ -78,7 +78,7 @@ void qsynthSetup::realize (void)
 	char *pszVal;
 #endif
 
-	// First we'll force all other conmmand line options...
+	// First we'll force all other command line options...
 	if (!sMidiDriver.isEmpty()) {
 		pszKey = (char *) "midi.driver";
 		::fluid_settings_setstr(m_pFluidSettings, pszKey,
