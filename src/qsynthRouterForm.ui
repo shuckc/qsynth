@@ -70,7 +70,7 @@
        </property>
        <item>
 
-         <widget class="QTreeWidget" name="ProgListView" >
+         <widget class="QTreeWidget" name="RulesListView" >
           <property name="toolTip" >
            <string>Midi Router Rules</string>
           </property>
@@ -97,7 +97,7 @@
           </property>
           <column>
            <property name="text" >
-            <string>Event</string>
+            <string>Midi Event Type</string>
            </property>
           </column>
           <column>
@@ -156,7 +156,7 @@
  <layoutdefault spacing="4" margin="4" />
  <tabstops>
   <tabstop>PresetTabWidget</tabstop>
-  <tabstop>ProgListView</tabstop>
+  <tabstop>RulesListView</tabstop>
   <tabstop>PreviewCheckBox</tabstop>
   <tabstop>DialogButtonBox</tabstop>
  </tabstops>

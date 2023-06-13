@@ -51,8 +51,6 @@ public:
 public slots:
 
 	void stabilizeForm();
-	void bankChanged();
-	void progChanged();
 	void previewChanged();
 
 protected slots:
@@ -61,11 +59,6 @@ protected slots:
 	void reject();
 
 protected:
-
-	void setBankProg(int iBank, int iProg);
-
-	QTreeWidgetItem *findBankItem(int iBank);
-	QTreeWidgetItem *findProgItem(int iProg);
 
 	bool validateForm();
 
