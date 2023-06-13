@@ -961,7 +961,7 @@
       <string>&amp;Midi Router</string>
      </property>
      <property name="icon">
-      <iconset resource="qsynth.qrc">:/images/channels1.png</iconset>
+      <iconset resource="qsynth.qrc">:/images/midirouter.png</iconset>
      </property>
      <property name="checkable">
       <bool>true</bool>

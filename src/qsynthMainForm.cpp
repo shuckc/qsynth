@@ -1395,7 +1395,7 @@ void qsynthMainForm::updateContextMenu (void)
 	pAction->setCheckable(true);
 	pAction->setChecked(m_pChannelsForm && m_pChannelsForm->isVisible());
 	pAction->setEnabled(bEnabled);
-	pAction = m_menu.addAction(QIcon(":/images/channels1.png"),
+	pAction = m_menu.addAction(QIcon(":/images/midirouter.png"),
 		tr("Router"), this, SLOT(toggleRouterForm()));
 	pAction->setCheckable(true);
 	pAction->setChecked(m_pRouterForm && m_pRouterForm->isVisible());
